@@ -27,6 +27,8 @@ dependencies {
 	implementation group: 'io.github.openfeign', name: 'feign-slf4j', version: '11.0'
 	implementation group: 'io.github.openfeign', name: 'feign-gson', version: '11.0'
 
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.2'
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

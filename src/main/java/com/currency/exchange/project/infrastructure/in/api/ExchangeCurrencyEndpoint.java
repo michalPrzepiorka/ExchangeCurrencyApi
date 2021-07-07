@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Currency;
 
 @RestController
@@ -17,7 +18,7 @@ public class ExchangeCurrencyEndpoint {
     }
 
     @PostMapping(value = "/exchange")
-    public ConversionResponse exchange(@RequestBody ConversionRequest conversionRequest) {
+    public ConversionResponse exchange(@RequestBody @Valid ConversionRequest conversionRequest) {
         Money input = toInputMoney(conversionRequest);
         Currency targetCurrency = toInputCurrency(conversionRequest);
 

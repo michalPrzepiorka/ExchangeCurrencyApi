@@ -1,24 +1,17 @@
 package com.currency.exchange.project.infrastructure.out.exchangeapi;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 public class CurrencyResponse {
-    private final List<JSONObject> rates;
+    private final List<RatesResponse> rates;
     private final String code;
 
-    public CurrencyResponse(List<JSONObject> rates, String code) {
+    public CurrencyResponse(List<RatesResponse> rates, String code) {
         this.rates = rates;
         this.code = code;
     }
 
-//    public Map<List<JSONObject>, BigDecimal> getRates() {
-//        return rates;
-//    }
-
-
-    public List<JSONObject> getRates() {
+    public List<RatesResponse> getRates() {
         return rates;
     }
 
