@@ -1,8 +1,0 @@
-POST http://localhost:8080/exchange
-Content-Type: application/json
-
-{
-  "inputAmount" : 10,
-  "inputCurrency" : "USD",
-  "targetCurrency" : "EUR"
-}

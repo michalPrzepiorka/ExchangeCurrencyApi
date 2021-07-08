@@ -21,7 +21,7 @@ public class Money {
         return currency;
     }
 
-    public Money toCurrency(Rate rate){
+    public Money toCurrency(Rate rate) {
         return new Money(
                 amount.multiply(rate.getRate())
                         .add((amount.multiply(rate.getRate()))

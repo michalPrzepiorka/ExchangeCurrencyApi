@@ -13,7 +13,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface AnyOfEnumValues {
     String message() default "must match any of expected values";
+
     Class<?>[] groups() default {};
+
     Class<? extends Enum<?>> value();
+
     Class<? extends Payload>[] payload() default {};
 }
