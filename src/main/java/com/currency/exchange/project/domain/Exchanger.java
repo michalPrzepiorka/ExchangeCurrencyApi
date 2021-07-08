@@ -16,7 +16,7 @@ public class Exchanger {
     public Money exchange(Money input, Currency targetCurrency) {
 //        Money inputCurrency = new Money(BigDecimal.ONE, Currency.getInstance("PLN"));
         Rate plnRate = new Rate(BigDecimal.ONE, Currency.getInstance("PLN"));
-        if (!input.getCurrency().equals(Currency.getInstance("PLN"))){
+        if (!input.getCurrency().equals(Currency.getInstance("PLN"))) {
             ExchangeRates inputCurrencyExchangeRates = exchangeRatesProvider.getFor(input.getCurrency());
             plnRate = inputCurrencyExchangeRates.rateToBid(targetCurrency);
         }

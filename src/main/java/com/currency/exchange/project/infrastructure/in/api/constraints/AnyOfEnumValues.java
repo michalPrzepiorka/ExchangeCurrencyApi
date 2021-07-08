@@ -16,5 +16,4 @@ public @interface AnyOfEnumValues {
     Class<?>[] groups() default {};
     Class<? extends Enum<?>> value();
     Class<? extends Payload>[] payload() default {};
-
 }
