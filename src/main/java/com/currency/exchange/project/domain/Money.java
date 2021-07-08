@@ -24,7 +24,7 @@ public class Money {
     public Money toCurrency(Rate rate) {
         return new Money(
                 amount.multiply(rate.getRate())
-                        .add((amount.multiply(rate.getRate()))
+                        .subtract((amount.multiply(rate.getRate()))
                                 .multiply(BigDecimal.valueOf(0.02))),
                 rate.getTargetCurrency()
         );
@@ -33,7 +33,7 @@ public class Money {
     public Money divideBy(Rate targetRate) {
         return new Money(
                 amount.divide(targetRate.getRate(), 2, RoundingMode.HALF_UP)
-                        .add((amount.divide(targetRate.getRate(), 2, RoundingMode.HALF_UP))
+                        .subtract((amount.divide(targetRate.getRate(), 2, RoundingMode.HALF_UP))
                                 .multiply(BigDecimal.valueOf(0.02))),
                 targetRate.getTargetCurrency()
         );
