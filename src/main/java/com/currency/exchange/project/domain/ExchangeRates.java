@@ -15,10 +15,17 @@ public class ExchangeRates {
         this.rates = rates;
     }
 
-    public Rate rateTo(Currency targetCurrency) {
+    public Rate rateToBid(Currency targetCurrency) {
         return Optional.of(targetCurrency.getCurrencyCode())
                 .map(e -> rates.stream().findFirst().get())
                 .map(rate -> new Rate(rate.getBid(), targetCurrency))
+                .orElseThrow(() -> new RuntimeException(String.format("Currency code %s not available", targetCurrency.getCurrencyCode())));
+    }
+
+    public Rate rateToAsk(Currency targetCurrency) {
+        return Optional.of(targetCurrency.getCurrencyCode())
+                .map(e -> rates.stream().findFirst().get())
+                .map(rate -> new Rate(rate.getAsk(), targetCurrency))
                 .orElseThrow(() -> new RuntimeException(String.format("Currency code %s not available", targetCurrency.getCurrencyCode())));
     }
 }
