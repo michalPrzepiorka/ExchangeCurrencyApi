@@ -21,20 +21,20 @@ public class Money {
         return currency;
     }
 
-    public Money toCurrency(Rate rate) {
+    public Money toCurrency(Rate rate, BigDecimal number) {
         return new Money(
                 amount.multiply(rate.getRate())
                         .subtract((amount.multiply(rate.getRate()))
-                                .multiply(BigDecimal.valueOf(0.02))),
+                                .multiply(number)),
                 rate.getTargetCurrency()
         );
     }
 
-    public Money divideBy(Rate targetRate) {
+    public Money divideBy(Rate targetRate, BigDecimal number) {
         return new Money(
                 amount.divide(targetRate.getRate(), 2, RoundingMode.HALF_UP)
                         .subtract((amount.divide(targetRate.getRate(), 2, RoundingMode.HALF_UP))
-                                .multiply(BigDecimal.valueOf(0.02))),
+                                .multiply(number)),
                 targetRate.getTargetCurrency()
         );
     }
