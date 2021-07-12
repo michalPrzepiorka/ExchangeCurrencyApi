@@ -1,12 +1,14 @@
 package com.currency.exchange.project.infrastructure.out.exchangeapi;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
-@Configuration
+@ConstructorBinding
+@ConfigurationProperties(prefix = "external-services.exchange-rates-api")
+@AllArgsConstructor
+@Getter
 public class CurrencyClientConfiguration {
-    @Bean
-    public CurrencyClient currencyClient(CurrencyClientFactory clientFactory) {
-        return clientFactory.createClient();
-    }
+    private final String host;
 }

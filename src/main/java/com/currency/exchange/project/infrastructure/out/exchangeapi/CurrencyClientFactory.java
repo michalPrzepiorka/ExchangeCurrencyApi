@@ -8,14 +8,12 @@ import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
 import org.springframework.stereotype.Component;
 
-import java.net.URI;
-
 @Component
 public class CurrencyClientFactory {
-    private final URI uri;
+    private final CurrencyClientConfiguration currencyClientConfiguration;
 
-    public CurrencyClientFactory() {
-        uri = URI.create("http://api.nbp.pl");
+    public CurrencyClientFactory(CurrencyClientConfiguration currencyClientConfiguration) {
+        this.currencyClientConfiguration = currencyClientConfiguration;
     }
 
     public CurrencyClient createClient() {
@@ -25,6 +23,6 @@ public class CurrencyClientFactory {
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger())
                 .logLevel(Logger.Level.FULL)
-                .target(CurrencyClient.class, uri.toString());
+                .target(CurrencyClient.class, currencyClientConfiguration.getHost());
     }
 }
